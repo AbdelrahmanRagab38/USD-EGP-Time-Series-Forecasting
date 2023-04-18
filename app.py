@@ -53,16 +53,17 @@ def predict():
     forecast = Amodel_fit.forecast(steps=steps)
 
     # ARIMA Plotting_Forecasting
-    plt.plot(df.index, df['price'], label='Actual')
-    plt.plot(forecast, label='Forecast')
-    plt.legend(loc='upper left')
+    fig, ax = plt.subplots()
+    ax.plot(df.index, df['price'], label='Actual')
+    ax.plot(forecast, label='Forecast')
+    ax.legend(loc='upper left')
     # Set the y-axis limits
-    plt.ylim((16, 40))
+    ax.set_ylim((16, 40))
     # Set the y-axis ticks
-    plt.yticks(range(16, 40, 2))
-    plt.title('ARIMA Forecast')
+    ax.set_yticks(range(16, 40, 2))
+    ax.set_title('ARIMA Forecast')
     plot_path1 = 'static/ARIMAForecast.png'
-    plt.savefig(plot_path1)
+    fig.savefig(plot_path1)
     plt.show()
 
     # Phrophet Prediction
@@ -81,6 +82,18 @@ def predict():
     # Save the plot to a file
     plot_path2 = 'static/PForecast.png'
     plt.savefig(plot_path2)
+    plt.show()
+    
+    # Prophet figure:
+    fig, ax = plt.subplots()
+    model.plot(Pforecast, xlabel='Date', ylabel='Price', ax=ax)
+    # Set the y-axis limits
+    ax.set_ylim((16, 40))
+    # Set the y-axis ticks
+    ax.set_yticks(range(16, 40, 2))
+    # Save the plot to a file
+    plot_path2 = 'static/PForecast.png'
+    fig.savefig(plot_path2)
     plt.show()
 
 
