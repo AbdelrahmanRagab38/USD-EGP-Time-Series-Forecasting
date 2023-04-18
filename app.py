@@ -26,6 +26,9 @@ def predict():
     df = df.resample('D').ffill()
     df = df.drop('Vol.', axis=1)
     df = df.drop('Change %', axis=1)
+    # Split into train and test sets
+    train_size = int(len(df) * 0.8)
+    train, test = df.iloc[:train_size], df.iloc[train_size:]
 
     prophet_df = pd.DataFrame({'ds': df.index, 'y': df['price']})
     model = Prophet()
@@ -38,8 +41,12 @@ def predict():
 
     future = model.make_future_dataframe(periods=steps)
     Pforecast = model.predict(future)
+    
     # Load the models
-    ARIMA_Model = joblib.load('arima_model.pkl')
+    #ARIMA_Model = joblib.load('arima_model.pkl')
+    Amodel = ARIMA(train['price'], order=(1,1,1)
+    Amodel_fit = model.fit()
+    
     #Phrophet_Model = joblib.load("prophet_model.pkl")
     # Make predictions
     # ARIMA PREDICTION
