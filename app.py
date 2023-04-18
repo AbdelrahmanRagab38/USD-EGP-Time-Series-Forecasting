@@ -40,8 +40,7 @@ def predict():
     data = request.form.to_dict()
     steps = int(data['steps'])
 
-    future = model.make_future_dataframe(periods=steps)
-    Pforecast = model.predict(future)
+    
     
     # Load the models
     #ARIMA_Model = joblib.load('arima_model.pkl')
@@ -69,7 +68,9 @@ def predict():
     # Phrophet Prediction
    # future = Phrophet_Model.make_future_dataframe(periods=steps)  # 1 year of future predictions
     #prophet_forecast = Phrophet_Model.predict(future)
-
+    
+    future = model.make_future_dataframe(periods=steps)
+    Pforecast = model.predict(future)
     # Phrophet Plotting_Forecasting
 
     model.plot(Pforecast, xlabel='Date', ylabel='Price')
@@ -77,11 +78,9 @@ def predict():
     plt.ylim((16, 40))
     # Set the y-axis ticks
     plt.yticks(range(16, 40, 2))
-
     # Save the plot to a file
     plot_path2 = 'static/PForecast.png'
     plt.savefig(plot_path2)
-
     plt.show()
 
 
