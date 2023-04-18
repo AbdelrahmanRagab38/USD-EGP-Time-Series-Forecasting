@@ -51,7 +51,7 @@ def predict():
     #Phrophet_Model = joblib.load("prophet_model.pkl")
     # Make predictions
     # ARIMA PREDICTION
-    forecast = ARIMA_Model.forecast(steps=steps)
+    forecast = Amodel_fit.forecast(steps=steps)
 
     # ARIMA Plotting_Forecasting
     plt.plot(df.index, df['price'], label='Actual')
