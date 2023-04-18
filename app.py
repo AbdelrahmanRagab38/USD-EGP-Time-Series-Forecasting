@@ -5,6 +5,7 @@ import pandas as pd
 from prophet import Prophet
 import pickle
 import matplotlib.pyplot as plt
+from statsmodels.tsa.arima.model import ARIMA
 
 app = Flask(__name__)
 
