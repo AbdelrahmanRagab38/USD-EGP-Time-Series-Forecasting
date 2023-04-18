@@ -24,7 +24,6 @@ python-dateutil==2.8.2
 scikit-learn
 scipy
 seaborn
-sklearn
 statsmodels==0.13.5
 
 
