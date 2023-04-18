@@ -45,7 +45,7 @@ def predict():
     # Load the models
     #ARIMA_Model = joblib.load('arima_model.pkl')
     Amodel = ARIMA(train['price'], order=(1,1,1)
-    Amodel_fit = model.fit()
+    Amodel_fit = Amodel.fit()
     
     #Phrophet_Model = joblib.load("prophet_model.pkl")
     # Make predictions
