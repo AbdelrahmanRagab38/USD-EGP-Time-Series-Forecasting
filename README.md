@@ -1,6 +1,8 @@
 # USD-EGP-Time-Series-Forecasting
 
+Used tools : python (Flask for Backend)(pandas , numpy , Fbprophet for time series forecasting )   , HTML , CSS 
 
+live project:
 https://usd-egp-time-series-forecasting3.onrender.com/
 
 
